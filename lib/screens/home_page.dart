@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_baba/components/lista_opcoes.dart';
-import 'package:projeto_baba/screens/tela_bateria.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -18,7 +17,7 @@ class HomePage extends StatelessWidget {
         title: Column(
           children: <Widget>[
             Text(
-              'BABA ELETRÔNICA',
+              'BABÁ ELETRÔNICA',
               style: TextStyle(
                   fontSize: 25, fontFamily: "Raleway", color: Colors.white),
             ),

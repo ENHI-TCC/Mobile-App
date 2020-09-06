@@ -18,3 +18,17 @@ Future<bool> deleteItem(String id) async {
   }
   return false;
 }
+
+Future<bool> deleteAll() async {
+  var response = await http.delete(
+    'http://192.168.100.33:8080/ServerRequest/DeleteAll',
+    // headers: <String, String>{
+    //   'Content-Type': 'application/json; charset=UTF-8',
+    // },
+  );
+
+  if (response.statusCode == 200) {
+    return true;
+  }
+  return false;
+}

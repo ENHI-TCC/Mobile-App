@@ -27,7 +27,7 @@ class _listaState extends State<lista> {
           } else if (snapshot.hasError) {
             return Center(
               child: Text(
-                "SEM CONEXÃO.",
+                "SEM CONEXÃO COM O SERVIDOR.",
                 style: TextStyle(color: Colors.black87, fontSize: 25),
               ),
             );

@@ -33,16 +33,51 @@ class _PostListState extends State<PostList> {
                       color: Colors.white,
                     ),
                   ),
-                  onTap: () {
-                    deleteItem(datas[index].id.toString()).then((value) {
-                      if (value) {
-                        setState(() {
-                          datas.removeAt(index);
-                        });
-                      }
-                    });
+                  onTap: () async {
+                    final bool resp = await showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            backgroundColor: Colors.yellow[100],
+                            content: Text(
+                              "Deletar item?",
+                              style: TextStyle(color: Colors.blueGrey[300]),
+                            ),
+                            actions: <Widget>[
+                              FlatButton(
+                                color: Colors.blue[200],
+                                child: Text(
+                                  "Cancelar",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                              FlatButton(
+                                color: Colors.red[300],
+                                child: Text(
+                                  "Deletar",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                onPressed: () {
+                                  deleteItem(datas[index].id.toString())
+                                      .then((value) {
+                                    if (value) {
+                                      setState(() {
+                                        datas.removeAt(index);
+                                      });
+                                    }
+                                  });
+                                  Navigator.of(context).pop();
 
-                    print('QUER DELETAR');
+                                  print('QUER DELETAR');
+                                },
+                              ),
+                            ],
+                          );
+                        });
+                    return resp;
                   },
                 ),
                 // onTap: () {},
@@ -67,12 +102,16 @@ class _PostListState extends State<PostList> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: widget.datas.length,
-      itemBuilder: (context, index) {
-        return printjson(index, context); //chamo a função E PRINTA NA TELINHA
-      },
+    return SingleChildScrollView(
+      child: ListView.builder(
+        physics: NeverScrollableScrollPhysics(),
+        reverse: true,
+        shrinkWrap: true,
+        itemCount: widget.datas.length,
+        itemBuilder: (context, index) {
+          return printjson(index, context); //chamo a função E PRINTA NA TELINHA
+        },
+      ),
     );
-    ;
   }
 }
