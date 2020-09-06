@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:projeto_baba/components/delete.dart';
 import 'package:projeto_baba/components/lista.dart';
 import 'package:projeto_baba/models/post.dart';
 
@@ -33,6 +34,54 @@ class _tela_relatorioState extends State<tela_relatorio> {
         ),
       ),
       body: lista(fetchPost(http.Client())), //CHAMA O POVO AQUI
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () async {
+          final bool resp = await showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  backgroundColor: Colors.yellow[100],
+                  content: Text(
+                    "Deletar lista?",
+                    style: TextStyle(color: Colors.blueGrey[300]),
+                  ),
+                  actions: <Widget>[
+                    FlatButton(
+                      color: Colors.blue[200],
+                      child: Text(
+                        "Cancelar",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                    FlatButton(
+                      color: Colors.red[300],
+                      child: Text(
+                        "Deletar",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          deleteAll();
+                          print('PEDIU DELETE TUDO');
+                        });
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                );
+              });
+          return resp;
+        },
+        label: Text(
+          'Limpar Lista',
+          style: TextStyle(color: Colors.white),
+        ),
+        icon: Icon(Icons.delete_forever, color: Colors.white),
+        backgroundColor: Colors.red[200],
+      ),
     );
   }
 }
@@ -53,6 +102,6 @@ Future<List<Post>> fetchPost(http.Client client) async {
 
     return compute(parsePost, response.body);
   } else {
-    throw Exception('Falha ao carregar um post');
+    throw Exception('Falha ao carregar');
   }
 }
