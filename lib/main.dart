@@ -10,7 +10,7 @@ void main() => runApp(
         theme: ThemeData(
           primaryColor: Colors.yellow,
           accentColor: Colors.yellow,
-          textTheme: TextTheme(body1: TextStyle(color: Colors.yellow)),
+          textTheme: TextTheme(body1: TextStyle(color: Colors.yellow[100])),
         ),
         home:
             /*Container(

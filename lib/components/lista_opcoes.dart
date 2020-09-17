@@ -1,5 +1,6 @@
 //PAGINA OPÇOES
 import 'package:flutter/material.dart';
+import 'package:projeto_baba/models/caixa_info.dart';
 import 'package:projeto_baba/screens/tela_info.dart';
 import 'package:projeto_baba/screens/tela_relatorio.dart';
 
@@ -15,11 +16,11 @@ class Opcoes extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             Card(
-              color: Colors.blue[800],
+              color: Colors.blueAccent[200],
               child: Container(
                 decoration: BoxDecoration(
                     border: Border.all(
-                      color: Colors.blue[800],
+                      color: Colors.blueAccent[200],
                     ),
                     borderRadius: BorderRadius.all(Radius.circular(20))),
                 height: 180,
@@ -61,13 +62,13 @@ class Opcoes extends StatelessWidget {
               ),
             ),
             Card(
-              color: Colors.blue[800],
+              color: Colors.blueAccent[200],
               child: Container(
                 height: 180,
                 width: 900,
                 decoration: BoxDecoration(
                     border: Border.all(
-                      color: Colors.blue[800],
+                      color: Colors.blueAccent[200],
                     ),
                     borderRadius: BorderRadius.all(Radius.circular(20))),
                 child: Center(
@@ -92,14 +93,15 @@ class Opcoes extends StatelessWidget {
                     /* subtitle: Text(''), */
                     onTap: () {
                       debugPrint('PEDIU INFO');
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return tela_info();
-                          },
-                        ),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) {
+                      //       return tela_info();
+                      //     },
+                      //   ),
+                      // );
+                      info(context);
                     },
                   ),
                 ),

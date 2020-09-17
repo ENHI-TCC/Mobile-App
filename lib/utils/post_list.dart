@@ -24,7 +24,7 @@ class _PostListState extends State<PostList> {
           Padding(
             padding: EdgeInsets.all(5),
             child: Card(
-              color: Colors.blue[800],
+              color: Colors.blueAccent[200],
               child: ListTile(
                 trailing: GestureDetector(
                   child: Container(

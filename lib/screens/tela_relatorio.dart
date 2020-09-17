@@ -17,7 +17,7 @@ class _tela_relatorioState extends State<tela_relatorio> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.red[400],
         centerTitle: true,
         title: Column(
           children: [
